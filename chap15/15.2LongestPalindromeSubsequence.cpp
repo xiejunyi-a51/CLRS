@@ -7,7 +7,6 @@
 using namespace std;
 
 /*
-algorithm
 c[i,j] = {
             c[m,j]
                 if there exist a i <= m < j, so that s[m] = s[j] and

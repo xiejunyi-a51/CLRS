@@ -25,7 +25,7 @@ public:
         int maxLMIS{0};
         for (int num : nums)
         {
-            int index = binary_search_for_less(num, endingElems);
+            int index = find_prev(num, endingElems);
             int currentLMIS = index + 2;
             if (currentLMIS > maxLMIS)
             {
@@ -40,32 +40,38 @@ public:
         return maxLMIS;
     }
 
-    int binary_search_for_less(int num, vector<int> &endingElems)
+private:
+    int find_prev(int num, vector<int> &endingElems)
     {
-        int start{0};
-        int end{static_cast<int>(endingElems.size() - 1)};
-        while (start <= end)
+        if (endingElems.empty()) return -1;
+        auto [success, index] = binary_search(num, endingElems);
+        if (success) return index-1;
+        if (num < endingElems.at(index)) return index-1;
+        return index;
+    }
+    tuple<bool, int> binary_search(int num, vector<int> &arr)
+    {
+        int l{0};
+        int r{static_cast<int>(arr.size())-1};
+        int lastCompared{0};
+        while (l <= r)
         {
-            int mid = (start + end) / 2;
-            if (endingElems.at(mid) >= num)
+            int mid = (l+r)/2;
+            if (num == arr.at(mid))
             {
-                end = mid - 1;
+                return make_tuple(true, mid);
             }
-            else if (endingElems.at(mid) < num)
+            lastCompared = mid;
+            if (num < arr.at(mid))
             {
-                if (end == start + 1)
-                {
-                    start = end;
-                    continue;
-                }
-                else if (end == start)
-                {
-                    return mid;
-                }
-                start = mid;
+                r--;
+            }
+            else
+            {
+                l++;
             }
         }
-        return end;
+        return make_tuple(false, lastCompared);
     }
 };
 

@@ -5,13 +5,18 @@
 * the four dynamic first/last operations each run in amortized expected O(1) time.
 - - -
 * Set Interface and Sequence Interface
-    * Sequence about extrinsic order, set is about intrinsic order
+    * Sequence is about extrinsic order, set is about intrinsic order
     
     |set operations:|Sequence operations:
     |---|---
     |build(X)| build(X)
     |len()|len()
-    |find(k)|get_at(i)
+    |find(k)
+    |find_prev(k)
+    |find_next(k)
+    |find_min()
+    |find_max()
+    ||get_at(i)
     ||set_at(i)
     |delete(k)| delete_at(i)
     ||delete_first()
@@ -33,6 +38,6 @@ a. find pairwise sum = k in expected O(n) time.
 
 b. find biggest pairwise sum <= k = 600 $n^6$ in worst-case O(n) time.
 * Idea1 : radix sort.
-* Idea2 : binary search. But it ends up with worst-case O(nlogn) time.
+* Idea2 : binary search. But it ends up with worst-case O($n\log n$) time.
 * Notes: binary search when fails tells not only the key k is no there but also the previous value and the next value. That is , k is in range (right, left)  right < left, which is also the termination condition on for loop.
 * Idea3: Two finger algorithm

@@ -30,4 +30,4 @@ list_search(k):
 list_delete(x):
     L = A[x+2]
     freeObject(x)
-
+```

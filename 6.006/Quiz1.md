@@ -52,13 +52,17 @@ radix sort
 Running time is worst-case $\text{O}(n^2).$
 
 Correctness:
-Loop Invariant: at the start of each loop with $i=i^*,j=j^*$, for any $0<=i<i^*$ or $n>j>j^*$, $A[i]+B[j]=-c$ does not hold.
+Loop Invariant: at the start of each loop with $i=i^*,j=j^*$, 
+1. for any $1<=i<i^*, 1\le j\le n$, $A[i]+B[j] \neq -c$.
+2. for any $j^*<j \le n, 1\le i\le n$, $A[i]+B[j] \neq -c$.
+
+Prove:
 * Init: Trivally true when $i^*=0,j^*=n-1$.
 * Each round of loop:
   $A[i]+B[j]!=-c,i<i^*\  \text{or}\ j>j^*$.
-  * $A[i^*]+B[j^*]>-c$. Because $A[i]>=A[i^*],i>=i^*$, we have $A[i]+B[j^*],-1<i<n$ not equal $-c$. Decrease $j$ by 1 and invariant is restored.
-  * $A[i^*]+B[j^*]<-c$. Because $B[j]<=B[j^*],j<=j^*$, we have $A[i^*]+B[j]!=-c$ for any $j$. Increase $i$ by 1 and invariant is restored. 
-* Exit: Algorithm either exits with $A[i]+B[j]=-c$ for some $i$ and $j$ and a triple sum is found. Otherwise $i^*=n$ or $j^*=-1$, no $A[i]$ and $B[j]$ add up to $-c$ for any $0<i$ or $j<n$, i.e. for any pair of $i,j\in A\times B$, $A[i]+B[j]$ is not equal to $-c$.
+  * $A[i^*]+B[j^*]>-c$. Because $A[i]>=A[i^*],i>=i^*$, we have $A[i]+B[j^*]\neq -c,-1\le i\le n$. Decrease $j$ by 1 and invariant is restored.
+  * $A[i^*]+B[j^*]<-c$. Because $B[j]<=B[j^*],j<=j^*$, we have $A[i^*]+B[j]\neq-c$ for any $j$. Increase $i$ by 1 and invariant is restored. 
+* Exit: Algorithm either exits with $A[i]+B[j]=-c$ for some $i$ and $j$ and a triple sum is found. Otherwise algorithm exists with $i^*=n+1$ or $j^*=0$. No $A[i]$ and $B[j]$ add up to $-c$ for any $i$ in the first case or for any $j$ in second case. i.e. for any pair of $i,j\in A\times B$, $A[i]+B[j]$ is not equal to $-c$.
 ### Problem 7.
 Starting from $v$ and go up the tree, with each of its ancestors $x$ encountered, we can compute the index $\text{index}(x,v)$ of $v$ in subtree rooted at $x$ in worst-case time $\text{O}(1)$. Because we already know index of $v$ in $x$'s child subtrees.
 $$

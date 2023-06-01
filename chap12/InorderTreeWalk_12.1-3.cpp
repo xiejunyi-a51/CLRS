@@ -18,24 +18,38 @@ struct Node
     State state{0};
 };
 
-vector<Node *> stack;
+using Stack = vector<Node *>;
 void inorder_traverse(Node *subtree)
 {
-    auto &x = subtree;
+    if (not subtree)
+    {
+        return;
+    }
+    Stack stack{};
+    auto x  = subtree;
     while (x or not stack.empty())
     {
         if (x)
         {
             stack.push_back(x);
             x = x->left;
+            continue;
         }
-        else
-        {
-            x = stack.back();
-            stack.pop_back();
-            cout << x->key << " \n";
-            x = x->right;
-        }
+
+        x = stack.back();
+        stack.pop_back();
+        cout << x->key << " ";
+
+        x = x->right;
+    }
+}
+
+void morris(Node* subtree)
+{
+    auto x = subtree;
+    while (x)
+    {
+        
     }
 }
 

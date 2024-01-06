@@ -87,14 +87,14 @@ Time: $T=\Theta(n^2)$.
 **Sol. 2**
 Because of the strict less than restriction, one orientation of a type of block can only appear once in solution. Since there are 3 of each type of block, just orient them in 3 diffrent ways and we never have to think of orientation choices again.
 
-For each two blocks $b_i=w_i \times h_i \times l_i$ and $b_j=w_j \times h_j \times l_j$, compare top dimentions $d_i=w_i \times l_i$ with $d_j=w_j \times l_j$ and we have their relative ordering.
+For each two blocks $b_i=w_i \times h_i \times l_i$ and $b_j=w_j \times h_j \times l_j$, compare top dimentions $d_i=w_i \times l_i$ with $d_j=w_j \times l_j$ and we have their relative ordering. With that we build a DAG representing blocks' topological order.
 
 Subproblem $H(i)$: Maximum height built using $b_i$ as top block.
 
 Relation:
 
 $$
-H(i) =  h_i + \max{\{H(j)|d_j>d_i\}}\cup \{0\}
+H(i) =  h_i + \max{\{H(j)|b_j\in Adj^{+}(b_i)\}}\cup \{0\}
 $$
 
 ToPo. order: from bigger dimensions to smaller.

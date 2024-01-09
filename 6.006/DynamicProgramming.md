@@ -196,3 +196,4 @@ Pseudo polynomial time becomes polynomial time when integers are within polynomi
     * $\Theta(1)$ branching: Fibonacci, Bowling, LCS, Alternating Coin Game, Floyd–Warshall, Subset Sum
     * $\Theta(degree)$ all shortest path algos
     * $\Theta(n)$ branching: LIS, Arithmetic Parenthesization, Rod Cutting
+    * Can you pick each object more than once? It's probably an Integer Subproblem type; else a standard suffix subproblem.

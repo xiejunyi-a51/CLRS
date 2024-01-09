@@ -1,4 +1,4 @@
-### Problem 8-1. Sunny Studies
+### Problem 8-1. Sunny Studies ⭐
     Given next n days and corresponding temperatures T[i], 0<=i<n. (never play more than two days in a row)
 
 **Sol. 1 w/ Subproblem Expansion**
@@ -33,7 +33,7 @@ Base: $H(n)=H(n+1)=H(n+2)=0$.
 Original problem: $H(0)$.
 Time: $T=\Theta(n)$.
 
-### Problem 8-2. Diffing Data
+### Problem 8-2. Diffing Data ⭐
     Given two files of n lines A,B. Minimize number of insertions and deletions that transform A to B. Swapping adjacent lines is allowed at most once for each line.
 
 Subproblem $D(i,j)$: minimize insertions and deletions that transform suffixes $A[i:]$ to $B[j:]$.
@@ -62,7 +62,7 @@ Base: $D(n+1, j)=n-j+1$, $D(i,n+1) = n-i+1$.
 Original problem: $D(0,0)$.
 Time: $T=\Theta(n^2)$.
 
-### Problem 8-3. Building Blocks
+### Problem 8-3. Building Blocks ⭐
 
 **Sol. 1 w/ Subproblem Expansion**
 
@@ -115,7 +115,7 @@ $$
 H(i) =  h_i + \max{\{H(j)|j>i,d_j>d_i\}}\cup \{0\}
 $$
 
-### Problem 8-4. Princess Plum
+### Problem 8-4. Princess Plum ⭐
     Given n x n grid forest where each grid square contains either a tree, mushroom, or is empty. Maximize mushrooms Pricess can pick on a quick path from top left square to bottom right square. Also return the number of paths to achieve that.
 
 Quick path means Pricess can only go right or down.
